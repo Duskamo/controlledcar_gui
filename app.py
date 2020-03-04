@@ -11,9 +11,23 @@ def index():
 
 
 # Data Requests
+@app.route('/update_car', methods=['POST'])
+def update_car_y():
+	# Gather booking request data
+	carInputInfo = request.json
+
+	# Process Data
+	print(carInputInfo)
+	joystickListenerUrl = "http://localhost:5001"
+	resp = requests.post(joystickListenerUrl,json=carInputInfo)
+	
+
+	# Return message to browser
+	return "Success"
+
 """
-@app.route('/book_through_index', methods=['POST'])
-def book_through_index():
+@app.route('/update_car', methods=['POST'])
+def update_car():
 	# Gather booking request data
 	bookingInfo = request.json
 
@@ -30,7 +44,8 @@ def book_through_index():
 		return "Success"
 	else:
 		return "Failure"
-
+"""
+"""
 # Background Processes
 def fireSaveRequests(bookingInfo):
 	bookingSendToVRBOServiceUrl = "http://localhost:5002/send_booked_information_to_vrbo"
